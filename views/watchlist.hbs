@@ -1,0 +1,216 @@
+<h1>{{watchlistName}} Watch List</h1>
+<input type="hidden" id="watchlistId" value="{{watchlistId}}" />
+<input type="hidden" id="watchlistName" value="{{watchlistName}}" />
+
+<!-- Back to Search Button -->
+<a href="/" class="back-button">Back to Search</a>
+
+<input type="text" id="searchQuery" name="query" placeholder="Search for a movie..." />
+<button onclick="openWatchlistPopup('watchlist')">Open Watchlist</button>
+<button onclick="openWatchlistPopup('discover')">Discover Movie</button>
+
+<table>
+  <thead>
+    <tr>
+      <th>Poster</th>
+      <th>Title</th>
+      <th>Overview</th>
+      <th>Release Date</th>
+      <th>ID</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#if movies.length}}
+      {{#each movies}}
+        <tr>
+          <td>
+            {{#if this.poster_path}}
+              <img
+                src="https://image.tmdb.org/t/p/w200{{this.poster_path}}"
+                alt="{{this.title}} Poster"
+                width="100"
+              />
+            {{else}}
+              <img
+                src="/images/placeholder.png"
+                alt="No Poster Available"
+                width="100"
+              />
+            {{/if}}
+          </td>
+          <td>{{this.title}}</td>
+          <td>{{this.overview}}</td>
+          <td>{{this.release_date}}</td>
+          <td>{{this.id}}</td>
+          <td>
+            <button class="remove" data-id="{{this.id}}" onclick="removeMovieFromWatchlist('{{this.id}}')">-</button>
+          </td>
+        </tr>
+      {{/each}}
+    {{else}}
+      <tr>
+        <td colspan="6" class="no-results">No movies found.</td>
+      </tr>
+    {{/if}}
+  </tbody>
+</table>
+
+<script>
+  function openWatchlistPopup(action) {
+    const watchlistId = document.getElementById('watchlistId').value;
+    const watchlistName = document.getElementById('watchlistName').value;
+
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    const popupWidth = Math.round(screenWidth * 0.8); // 80% of screen width
+    const popupHeight = Math.round(screenHeight * 0.8); // 80% of screen height
+
+    const left = Math.round((screenWidth - popupWidth) / 2); // Center horizontally
+    const top = Math.round((screenHeight - popupHeight) / 2); // Center vertically
+
+    let query = '';
+    let url = ''; 
+    
+    if (action === 'watchlist') {
+        query = document.getElementById('searchQuery').value;
+
+        if (!query) {
+            alert("Please enter a movie tittle!");
+            return;
+        }
+
+        url = `/watchlist/search?watchlistName=${encodeURIComponent(watchlistName)}&watchlistId=${encodeURIComponent(watchlistId)}&query=${encodeURIComponent(query)}`;
+
+    } else if (action === 'discover') {
+
+        url = `/watchlist/discover?watchlistName=${encodeURIComponent(watchlistName)}&watchlistId=${encodeURIComponent(watchlistId)}`;
+    }
+
+    // Open the popup with the constructed URL
+    const popup = window.open(
+        url,
+        'WatchlistPopup',
+        `width=${popupWidth},height=${popupHeight},left=${left},top=${top},scrollbars=yes,resizable=no`
+    );
+    
+    if (!popup) {
+        alert('Popup blocked! Please allow popups for this site.');
+    }
+}
+
+</script>
+
+<script>
+  // Function to refresh the watchlist table dynamically
+  function refreshWatchlist() {
+    const watchlistId = document.getElementById('watchlistId').value;
+
+    if (!watchlistId) {
+        alert('Watchlist ID is missing!');
+        return;
+    }
+
+    fetch(`/watchlist/refreshWatchlist/${watchlistId}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    }).then(response => {
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            updateWatchlistTable(data.movies); // Atualiza a tabela com os filmes
+        } else {
+            alert('Failed to refresh the watchlist.');
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching watchlist movies:', error);
+    });
+}
+
+
+</script>
+
+
+<script>
+  // Remove Movie from Watchlist (AJAX)
+function removeMovieFromWatchlist(movieId) {
+    const watchlistId = document.getElementById('watchlistId').value;
+
+    fetch('/watchlist/removeMovie', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            watchlistId: watchlistId,
+            movieId: movieId
+        }),
+    }).then(response => {
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            updateWatchlistTable(data.movies); // Atualiza a tabela com os filmes
+        } else {
+            alert('Failed to refresh the watchlist.');
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching watchlist movies:', error);
+    });
+}
+
+// Update the Watchlist Table
+function updateWatchlistTable(movies) {
+    const tbody = document.querySelector('table tbody');
+    tbody.innerHTML = ''; // Limpa o conteúdo atual da tabela
+
+    if (movies.length > 0) {
+        movies.forEach(movie => {
+            const row = `
+                <tr>
+                    <td>
+                        ${movie.poster_path ? `<img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.title} Poster" width="100" />` : `<img src="/images/placeholder.png" alt="No Poster Available" width="100" />`}
+                    </td>
+                    <td>${movie.title}</td>
+                    <td>${movie.overview}</td>
+                    <td>${movie.release_date}</td>
+                    <td>${movie._id}</td>
+                    <td>
+                        <button class="remove" data-id="${movie._id}">-</button>
+                    </td>
+                </tr>
+            `;
+            tbody.innerHTML += row;
+        });
+    } else {
+        tbody.innerHTML = '<tr><td colspan="6" class="no-results">No movies found.</td></tr>';
+    }
+
+    // Aplique a delegação de eventos para os novos botões de remoção
+    tbody.addEventListener('click', function(event) {
+        if (event.target && event.target.classList.contains('remove')) {
+            const movieId = event.target.getAttribute('data-id');
+            removeMovieFromWatchlist(movieId); // Chama a função para remover o filme
+        }
+    });
+}
+
+</script>
+
+<style>
+   h1 { text-align: center; color: #333; } /* Style the back button */
+  .back-button { position: absolute; top: 20px; right: 20px; padding: 10px 20px;
+  background-color: #007bff; color: white; text-decoration: none; border-radius:
+  5px; } .back-button:hover { background-color: #0056b3; } table { width: 100%;
+  border-collapse: collapse; margin: 20px 0; font-size: 16px; text-align: left;
+  } th, td { padding: 12px; border-bottom: 1px solid #ddd; } th {
+  background-color: #f2f2f2; } img { border-radius: 4px; } .no-results {
+  text-align: center; font-size: 18px; color: #888; } button { padding: 5px
+  10px; margin: 2px; }
+</style>
