@@ -17,19 +17,25 @@ router.get('/searchByID', watchlistController.searchMoviesByID);
 // Route to search watchlists by user (based on user ID in session)
 router.get('/searchByUser', watchlistController.searchWatchlistsByUser);
 
+// Route to get a user's watch list by ID
+router.get('/:id', watchlistController.getWatchlist);
+
 // Route to create a new watch list
 router.post('/create', watchlistController.createWatchlist);
 
 // Route to delete a specific watchlist by ID
-router.post('/delete/:id', watchlistController.deleteWatchlist);
-
-// Route to get a user's watch list by ID
-router.get('/:id', watchlistController.getWatchlist);
+router.delete('/delete/:id', watchlistController.deleteWatchlist);
 
 // Route to add a movie to the watchlist
 router.post('/addMovie', watchlistController.addMovieToWatchlist);
 
 // Route to remove a movie from the watchlist
 router.post('/removeMovie', watchlistController.removeMovieFromWatchlist);
+
+// Route to update a movie rating in a watchlist
+router.post('/updateRating', watchlistController.updateRating);
+
+router.post('/toggleWatched', watchlistController.toggleWatched);
+
 
 module.exports = router;

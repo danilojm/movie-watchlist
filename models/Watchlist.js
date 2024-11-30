@@ -7,9 +7,13 @@ const watchlistSchema = new mongoose.Schema({
   movies: [
     {
       title: String,
+      id: String,
+      imdb_id: String,
       poster_path: String,
       release_date: String,
       overview: String,
+      rating: { type: String, default: '0' }, 
+      watched: { type: Boolean, default: false }, 
     },
   ],
 });

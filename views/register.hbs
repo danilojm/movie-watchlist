@@ -1,37 +1,50 @@
 <!-- views/register.hbs -->
-<h1>Register</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
 
-<!-- Show error messages if any -->
-{{#if message}}
-    <div class="alert alert-danger">
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="/css/registerStyle.css" />
+  </head>
+  <body>
+    <h1>Register</h1>
+
+    <!-- Show error messages if any -->
+    {{#if message}}
+      <div class="alert alert-danger">
         {{message}}
-    </div>
-{{/if}}
+      </div>
+    {{/if}}
 
-<form action="/auth/register" method="POST">
-    <div>
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" required />
-    </div>
-    
-    <div>
+    <form action="/auth/register" method="POST">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" required />
+      </div>
+
+      <div>
         <label for="email">Email</label>
         <input type="email" name="email" id="email" required />
-    </div>
+      </div>
 
-    <div>
+      <div>
         <label for="password">Password</label>
         <input type="password" name="password" id="password" required />
-    </div>
+      </div>
 
-    <div>
+      <div>
         <label for="password2">Confirm Password</label>
         <input type="password" name="password2" id="password2" required />
-    </div>
+      </div>
 
-    <div>
+      <div>
         <button type="submit">Register</button>
-    </div>
-</form>
+      </div>
+    </form>
 
-<p>Already have an account? <a href="/auth/login">Login here</a></p>
+    <p>Already have an account? <a href="/auth/login">Login here</a></p>
+  </body>
+</html>

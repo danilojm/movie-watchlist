@@ -40,7 +40,7 @@ router.post('/login', async (req, res) => {
             // Set req.session.user to store user data in the session
             req.session.user = {
                 id: user._id,
-                username: user.username,
+                name: user.name,
                 email: user.email
             };
 
@@ -70,52 +70,33 @@ router.get('/register', (req, res) => {
 
 // POST Register request (to create a new user)
 router.post('/register', async (req, res) => {
-    const { username, email, password, password2 } = req.body;
+    const { name, email, password, password2 } = req.body;
 
     // Check if passwords match
     if (password !== password2) {
         return res.render('register', { message: 'Passwords do not match' });
     }
 
-    // Check if email or username already exists
+    // Check if email already exists
     const existingEmail = await User.findOne({ email });
-    const existingUsername = await User.findOne({ username });
 
     if (existingEmail) {
         return res.render('register', { message: 'Email already in use' });
     }
 
-    if (existingUsername) {
-        return res.render('register', { message: 'Username already taken' });
-    }
 
     try {
         // Hash password and create new user
         const newUser = new User({
-            username,
+            name,
             email,
             password
         });
 
         // Save user to the database
         await newUser.save();
+        return res.redirect('/auth/login');  // Redirect to home page after successful registration
 
-        // Log the user in after registration
-        req.login(newUser, (err) => {
-            if (err) {
-                console.error('Login error after registration:', err);
-                return res.status(500).send('Server error during login');
-            }
-
-            // Set req.session.user to store user data in the session
-            req.session.user = {
-                id: newUser._id,
-                username: newUser.username,
-                email: newUser.email
-            };
-
-            return res.redirect('/');  // Redirect to home page after successful registration
-        });
     } catch (error) {
         console.error(error);
         res.status(500).send('Server error');

@@ -3,8 +3,6 @@ const express = require('express');
 const router = express.Router();
 const Watchlist = require('../models/Watchlist'); // Assuming Watchlist is your model for storing watchlists
 
-const watchlistController = require('../controllers/watchlistController');
-
 // Home route (index) - this is the home page
 router.get('/', async (req, res) => {
   if (!req.session.user) {

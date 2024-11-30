@@ -1,5 +1,4 @@
 const Watchlist = require('../models/Watchlist');
-const Movie = require('../models/movie'); // Assuming you have a Movie model or can fetch from TMDb
 const tmdbAPI = require('../config/tmdb');  // Import the tmdbAPI module
 
 // 1. Create a new watchlist
@@ -162,7 +161,7 @@ exports.addMovieToWatchlist = async (req, res) => {
         const { data } = await tmdbAPI.get(`/movie/${movieId}`);
         if (!data) {
             return res.status(404).json({ message: 'Movie not found' });
-        }
+        } 
 
         watchlist.movies.push(data);
         await watchlist.save();
@@ -196,6 +195,84 @@ exports.removeMovieFromWatchlist = async (req, res) => {
         res.status(500).json({ message: 'Error removing movie from watchlist.' });
     }
 };
+
+// 9. Update the rating of a movie in the watchlist
+exports.updateRating = async (req, res) => {
+    const { watchlistId, movieId, rating } = req.body;
+
+    if (!watchlistId || !movieId || rating === undefined) {
+        return res.status(400).json({ message: 'Missing parameters: watchlistId, movieId, or rating' });
+    }
+
+    try {
+        // Find the watchlist by ID
+        const watchlist = await Watchlist.findById(watchlistId);
+        if (!watchlist) {
+            return res.status(404).json({ message: 'Watchlist not found' });
+        }
+
+        // Find the movie in the watchlist by its movieId
+        const movie = watchlist.movies.find(m => m.id === movieId);
+        if (!movie) {
+            return res.status(404).json({ message: 'Movie not found in watchlist' });
+        }
+
+        // Update the rating of the movie
+        movie.rating = rating; // Assuming you have a 'rating' field in your movie object
+
+        // Save the updated watchlist
+        await watchlist.save();
+
+        // Send back the updated movie list
+        res.json({
+            success: true,
+            message: 'Movie rating updated successfully',
+            movies: watchlist.movies
+        });
+    } catch (error) {
+        console.error('Error updating movie rating:', error);
+        res.status(500).json({ message: 'Error updating movie rating.' });
+    }
+};
+
+exports.toggleWatched = async (req, res) => {
+    const { watchlistId, movieId, watched } = req.body;    
+
+    if (!watchlistId || !movieId || watched === undefined) {
+        return res.status(400).json({ message: 'Missing parameters: watchlistId, movieId, or rating' });
+    }
+
+    try {
+        // Find the watchlist by ID
+        const watchlist = await Watchlist.findById(watchlistId);
+        if (!watchlist) {
+            return res.status(404).json({ message: 'Watchlist not found' });
+        }
+
+        // Find the movie in the watchlist by its movieId
+        const movie = watchlist.movies.find(m => m.id === movieId);
+        if (!movie) {
+            return res.status(404).json({ message: 'Movie not found in watchlist' });
+        }
+
+        // Update the rating of the movie
+        movie.watched = watched; // Assuming you have a 'rating' field in your movie object
+
+        // Save the updated watchlist
+        await watchlist.save();
+
+        // Send back the updated movie list
+        res.json({
+            success: true,
+            message: 'Movie watched updated successfully',
+            movies: watchlist.movies
+        });
+    } catch (error) {
+        console.error('Error updating movie rating:', error);
+        res.status(500).json({ message: 'Error updating movie rating.' });
+    }
+};
+
 
 // Render user's watchlist page
 exports.renderWatchlistPage = async (req, res) => {

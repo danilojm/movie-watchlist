@@ -1,0 +1,115 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+  }
+  
+  /* Header */
+  h1 {
+    text-align: center;
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Movies List */
+  .movies-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .movie-item {
+    width: 200px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: #ffffff;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .movie-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Movie Poster */
+  .movie-poster img {
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Movie Info */
+  .movie-info h2 {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #333;
+  }
+  
+  .movie-overview {
+    font-size: 0.9em;
+    color: #555;
+    margin: 10px 0;
+    height: 60px; /* Fix height for consistent card sizes */
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .movie-release-date {
+    font-size: 0.85em;
+    color: #888;
+    margin: 5px 0;
+  }
+  
+  /* Add Button */
+  button.add {
+    padding: 8px 15px;
+    font-size: 0.9em;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button.add:hover {
+    background-color: #0056b3;
+  }
+  
+  /* No Results */
+  .no-results {
+    text-align: center;
+    font-size: 1.2em;
+    color: #888;
+    margin-top: 20px;
+  }
+  
+  /* Back to Search Link */
+  .back-to-search {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1em;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .back-to-search:hover {
+    text-decoration: underline;
+  }
+  

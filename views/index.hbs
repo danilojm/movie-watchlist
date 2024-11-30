@@ -5,12 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Movie WatchList</title>
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
     <!-- Link to a stylesheet if you have one -->
   </head>
   <body>
     <header>
-      <h1>Welcome, {{user.username}}</h1>
+      <h1>Welcome, {{user.name}}</h1>
       <nav>
         <form action="/auth/logout" method="POST" style="display: inline;">
           <button type="submit">Logout</button>
@@ -20,12 +20,10 @@
     </header>
 
     <main>
-      <h2>Your WatchLists</h2>
 
       <!-- Form to create a new watchlist -->
-      <h3>Create a New Watchlist</h3>
+      <h3 class="mainH3">Create a new Watchlist</h3>
       <form action="/watchlist/create" method="POST">
-        <label for="name">Watchlist Name:</label>
         <input
           type="text"
           name="name"
@@ -36,6 +34,7 @@
         <button type="submit">Create Watchlist</button>
       </form>
 
+      <h2>Your WatchLists</h2>
       <!-- Display the user's watchlists -->
       {{#if watchlists.length}}
         <ul>
@@ -46,16 +45,17 @@
 
               <!-- Form to navigate to the watchlist page with the correct watchlistId -->
               <form action="/watchlist/{{this._id}}" method="GET">
-                <button type="submit">{{this.name}}</button>
+                <button type="submit">Edit List</button>
               </form>
 
               <!-- Delete form -->
-            <form
-              action="/watchlist/delete/{{this._id}}"
-              method="POST"
-              style="display:inline;">
-              <button type="submit">Delete</button>
-            </form>
+              <form
+                action="/watchlist/delete/{{this._id}}"
+                method="POST"
+                style="display:inline;"
+              >
+                <button type="submit">Delete List</button>
+              </form>
             </li>
           {{/each}}
         </ul>

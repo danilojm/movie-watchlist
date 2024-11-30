@@ -1,56 +1,175 @@
-/* stylesheets/style.css */
-body {
-  font-family: Arial, sans-serif;
+/* General Reset */
+* {
   margin: 0;
   padding: 0;
-  color: #333;
+  box-sizing: border-box;
 }
 
-header,
-footer {
-  background-color: #444;
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #121212; /* Dark background */
+  color: #e0e0e0; /* Light text */
+  line-height: 1.6;
+  padding: 0 20px;
+}
+
+/* Header */
+header {
+  background-color: #6200ea; /* Purple background */
   color: #fff;
-  padding: 1em;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: right;
+}
+
+header h1 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  text-align: left; /* Aligns the text to the right */
+  padding-right: 20px; /* Adds spacing from the edge */
+}
+
+header nav button {
+  padding: 8px 15px;
+  font-size: 0.9em;
+  background-color: #ff6b6b; /* Red background */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+header nav button:hover {
+  background-color: #d9534f; /* Darker red */
+}
+
+
+.mainH3 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* Main Content */
+main {
+  margin: 20px auto;
+  max-width: 800px;
+  background: #1e1e1e; /* Dark background */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+main h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
   text-align: center;
 }
 
-nav ul {
+main form {
+  margin: 20px 0;
+  text-align: center;
+}
+
+main form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+main form input[type="text"] {
+  padding: 10px;
+  width: 80%;
+  max-width: 400px;
+  font-size: 1em;
+  border: 1px solid #444;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #333; /* Dark input field */
+  color: #fff; /* Light text */
+}
+
+main form button {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #03dac5; /* Teal background */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+main form button:hover {
+  background-color: #018786; /* Darker teal */
+}
+
+/* Watchlist Display */
+main ul {
   list-style: none;
   padding: 0;
 }
 
-nav ul li {
-  display: inline;
-  margin: 0 1em;
+main ul li {
+  background: #2c2c2c; /* Dark background for list items */
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
+main ul li h3 {
+  margin-bottom: 10px;
+  font-size: 1.2em;
 }
 
-form {
-  margin-top: 2em;
-  text-align: center;
+main ul li p {
+  margin-bottom: 10px;
+  font-size: 0.9em;
+  color: #bbb; /* Lighter text */
 }
 
-input[type="text"] {
-  padding: 0.5em;
-  width: 60%;
-  max-width: 300px;
-  font-size: 1em;
+main ul li form {
+  display: inline-block;
+  margin-right: 10px;
 }
 
-button {
-  padding: 0.5em 1em;
-  font-size: 1em;
-  cursor: pointer;
-  background-color: #28a745;
+main ul li form button {
+  padding: 5px 10px;
+  font-size: 0.9em;
+  background-color: #28a745; /* Green background */
   color: #fff;
   border: none;
   border-radius: 4px;
+  cursor: pointer;
 }
 
-button:hover {
-  background-color: #218838;
+main ul li form button:hover {
+  background-color: #218838; /* Darker green */
+}
+
+main ul li form button.delete {
+  background-color: #cf6679; /* Red background for delete button */
+}
+
+main ul li form button.delete:hover {
+  background-color: #b00020; /* Darker red */
+}
+
+/* No Watchlist */
+main p {
+  text-align: center;
+  font-size: 1em;
+  color: #888;
+}
+
+main p a {
+  color: #03dac5; /* Teal color for links */
+  text-decoration: none;
+}
+
+main p a:hover {
+  text-decoration: underline;
 }
