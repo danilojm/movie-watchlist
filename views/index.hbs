@@ -1,69 +1,64 @@
-<!-- views/index.hbs -->
-
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Movie WatchList</title>
     <link rel="stylesheet" href="/css/styles.css" />
-    <!-- Link to a stylesheet if you have one -->
+    <!-- Link to external script -->
+    <script src="/js/watchlistScript.js" defer></script>
   </head>
   <body>
     <header>
       <h1>Welcome, {{user.name}}</h1>
       <nav>
-        <form action="/auth/logout" method="POST" style="display: inline;">
+        <form action="/auth/logout" method="POST">
           <button type="submit">Logout</button>
         </form>
-
       </nav>
     </header>
 
     <main>
-
       <!-- Form to create a new watchlist -->
-      <h3 class="mainH3">Create a new Watchlist</h3>
-      <form action="/watchlist/create" method="POST">
-        <input
-          type="text"
-          name="name"
-          id="name"
-          required
-          placeholder="Enter watchlist name"
-        />
-        <button type="submit">Create Watchlist</button>
-      </form>
+      <section class="create-watchlist">
+        <h3>Create a New Watchlist</h3>
+        <form action="/watchlist/create" method="POST">
+          <input
+            type="text"
+            name="name"
+            id="name"
+            required
+            placeholder="Enter watchlist name"
+          />
+          <button type="submit">Create Watchlist</button>
+        </form>
+      </section>
 
-      <h2>Your WatchLists</h2>
       <!-- Display the user's watchlists -->
-      {{#if watchlists.length}}
-        <ul>
-          {{#each watchlists}}
-            <li>
-              <h3>{{this.name}}</h3>
-              <p>{{this.description}}</p>
-
-              <!-- Form to navigate to the watchlist page with the correct watchlistId -->
-              <form action="/watchlist/{{this._id}}" method="GET">
-                <button type="submit">Edit List</button>
-              </form>
-
-              <!-- Delete form -->
-              <form
-                action="/watchlist/delete/{{this._id}}"
-                method="POST"
-                style="display:inline;"
-              >
-                <button type="submit">Delete List</button>
-              </form>
-            </li>
-          {{/each}}
-        </ul>
-      {{else}}
-        <p>You have no watchlists yet.
-          <a href="/watchlist/create">Create one</a>
-          to get started!</p>
-      {{/if}}
+      <section class="watchlists">
+        <h2>Your WatchLists</h2>
+        {{#if watchlists.length}}
+          <ul>
+            {{#each watchlists}}
+              <li>
+                <h3>{{this.name}}</h3>
+                <p>{{this.description}}</p>
+                <div class="button-container">
+                  <form action="/watchlist/{{this._id}}" method="GET">
+                    <button type="submit" class="edit-btn">Edit List</button>
+                  </form>
+                  <!-- Delete form with confirmation -->
+                  <form action="/watchlist/delete/{{this._id}}" method="POST" onsubmit="confirmDelete(event)">
+                    <button type="submit" class="delete-btn">Delete List</button>
+                  </form>
+                </div>
+              </li>
+            {{/each}}
+          </ul>
+        {{else}}
+          <p>You have no watchlists yet. <b>Create One</b> to get started! </p>
+        {{/if}}
+      </section>
     </main>
   </body>
 </html>

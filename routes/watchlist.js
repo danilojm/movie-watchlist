@@ -24,7 +24,7 @@ router.get('/:id', watchlistController.getWatchlist);
 router.post('/create', watchlistController.createWatchlist);
 
 // Route to delete a specific watchlist by ID
-router.delete('/delete/:id', watchlistController.deleteWatchlist);
+router.post('/delete/:id', watchlistController.deleteWatchlist);
 
 // Route to add a movie to the watchlist
 router.post('/addMovie', watchlistController.addMovieToWatchlist);

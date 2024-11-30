@@ -62,9 +62,9 @@
   
   .movie-overview {
     font-size: 0.9em;
-    color: #555;
+    color: #000000;
     margin: 10px 0;
-    height: 60px; /* Fix height for consistent card sizes */
+    height: 70px;
     overflow: hidden;
     text-overflow: ellipsis;
   }

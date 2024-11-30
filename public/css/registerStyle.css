@@ -7,14 +7,21 @@
   
   body {
     font-family: 'Arial', sans-serif;
-    background-color: #121212;
     color: #fff;
     line-height: 1.6;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #1a1a1a, #333);
+    background: linear-gradient(
+      rgba(255, 199, 199, 0.6), /* Semi-transparent black */
+      rgba(172, 172, 172, 0.6)
+    ), 
+    url('/images/login-background.jpg'); /* Replace with your image path */
+    background-size: cover; /* Ensure the image covers the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-attachment: fixed; /* Fix the background for scrolling pages */
     flex-direction: column;
     padding: 20px;
   }

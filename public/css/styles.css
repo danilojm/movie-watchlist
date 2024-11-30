@@ -7,10 +7,24 @@
 
 body {
   font-family: "Arial", sans-serif;
-  background-color: #121212; /* Dark background */
-  color: #e0e0e0; /* Light text */
+  position: relative;
+  color: #e0e0e0;
   line-height: 1.6;
   padding: 0 20px;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/images/index-background.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5; 
+  z-index: -1;
 }
 
 /* Header */
@@ -21,15 +35,14 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  text-align: right;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header h1 {
   font-size: 1.8em;
-  margin-bottom: 10px;
-  text-align: left; /* Aligns the text to the right */
-  padding-right: 20px; /* Adds spacing from the edge */
 }
 
 header nav button {
@@ -46,41 +59,31 @@ header nav button:hover {
   background-color: #d9534f; /* Darker red */
 }
 
-
-.mainH3 {
-  text-align: center;
-  margin: 20px 0;
-}
-
 /* Main Content */
 main {
   margin: 20px auto;
   max-width: 800px;
-  background: #1e1e1e; /* Dark background */
+  background: #1e1e1e;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
-main h2 {
-  font-size: 1.5em;
-  margin-bottom: 20px;
+/* Section Styling */
+.create-watchlist, .watchlists {
+  margin-bottom: 30px;
+}
+
+.create-watchlist h3, .watchlists h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+form {
   text-align: center;
 }
 
-main form {
-  margin: 20px 0;
-  text-align: center;
-}
-
-main form label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: bold;
-  font-size: 1em;
-}
-
-main form input[type="text"] {
+form input[type="text"] {
   padding: 10px;
   width: 80%;
   max-width: 400px;
@@ -88,88 +91,80 @@ main form input[type="text"] {
   border: 1px solid #444;
   border-radius: 5px;
   margin-bottom: 10px;
-  background-color: #333; /* Dark input field */
-  color: #fff; /* Light text */
+  background-color: #333;
+  color: #fff;
 }
 
-main form button {
+form button {
   padding: 10px 20px;
   font-size: 1em;
-  background-color: #03dac5; /* Teal background */
+  background-color: #03dac5;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-main form button:hover {
-  background-color: #018786; /* Darker teal */
+form button:hover {
+  background-color: #018786;
 }
 
-/* Watchlist Display */
-main ul {
+/* Watchlists */
+ul {
   list-style: none;
   padding: 0;
 }
 
-main ul li {
-  background: #2c2c2c; /* Dark background for list items */
+ul li {
+  background: #2c2c2c;
   margin: 10px 0;
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-main ul li h3 {
+ul li h3 {
   margin-bottom: 10px;
-  font-size: 1.2em;
 }
 
-main ul li p {
-  margin-bottom: 10px;
-  font-size: 0.9em;
-  color: #bbb; /* Lighter text */
+ul li p {
+  color: #bbb;
 }
 
-main ul li form {
-  display: inline-block;
-  margin-right: 10px;
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
-main ul li form button {
-  padding: 5px 10px;
-  font-size: 0.9em;
-  background-color: #28a745; /* Green background */
+.edit-btn {
+  background-color: #28a745;
   color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  padding: 8px 15px;
+  border-radius: 5px;
 }
 
-main ul li form button:hover {
-  background-color: #218838; /* Darker green */
+.edit-btn:hover {
+  background-color: #218838;
 }
 
-main ul li form button.delete {
-  background-color: #cf6679; /* Red background for delete button */
+.delete-btn {
+  background-color: #cf6679;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 5px;
 }
 
-main ul li form button.delete:hover {
-  background-color: #b00020; /* Darker red */
+.delete-btn:hover {
+  background-color: #b00020;
 }
 
-/* No Watchlist */
-main p {
-  text-align: center;
-  font-size: 1em;
-  color: #888;
-}
-
-main p a {
-  color: #03dac5; /* Teal color for links */
+/* Links */
+a {
+  color: #03dac5;
   text-decoration: none;
 }
 
-main p a:hover {
+a:hover {
   text-decoration: underline;
 }

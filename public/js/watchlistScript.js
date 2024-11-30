@@ -307,3 +307,11 @@ function toggleWatchedStatus(movieId, isWatched) {
             console.error('Error updating watched status:', error);
         });
 }
+
+// Confirmation prompt before submitting the delete form
+function confirmDelete(event) {
+    const confirmation = confirm("Are you sure you want to delete this watchlist?");
+    if (!confirmation) {
+      event.preventDefault(); // Prevent form submission if the user cancels
+    }
+  }
