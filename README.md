@@ -1,5 +1,14 @@
 # Movie Watchlist App
 
+- _by Danilo Mendes de Oliveira_
+- _Student: Number 200549002_
+- _by Regina Fruet_
+- _Student: Number 200552682_
+- _Course: CMPG_
+- _24F JavaScript Frameworks - 202_
+- _Professor: Zahy Abdelaziz_
+- _4 Semester_
+
 ## Overview
 The Movie Watchlist App is a Node.js-based application that allows users to manage their movie watchlists. Users can register, log in, create and manage watchlists, add movies from TMDB (The Movie Database), update movie details, and track which movies they've watched.
 
