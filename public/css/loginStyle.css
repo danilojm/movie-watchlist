@@ -1,144 +1,165 @@
-/* General Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Arial', sans-serif;
-  color: #fff;
-  line-height: 1.6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: linear-gradient(
-      rgba(255, 199, 199, 0.6), /* Semi-transparent black */
-      rgba(172, 172, 172, 0.6)
-    ), 
-    url('/images/login-background.jpg'); /* Replace with your image path */
-  background-size: cover; /* Ensure the image covers the entire background */
-  background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* Prevent the image from repeating */
-  background-attachment: fixed; /* Fix the background for scrolling pages */
-  flex-direction: column;
-  padding: 20px;
-}
-
-h1 {
-  text-align: center;
-  font-size: 2.5em;
-  color: #ffffff;
-  margin-bottom: 20px;
-}
-
-form {
-  background: rgba(40, 40, 40, 1); /* Semi-transparent background */
-  padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  max-width: 400px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-form label {
-  font-size: 1em;
-  margin-bottom: 8px;
-  color: #ccc;
-}
-
-form input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  border: 1px solid #444;
-  background-color: #333;
-  color: #fff;
-  font-size: 1em;
-}
-
-form input:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.6);
-}
-
-form button {
-  width: 100%;
-  padding: 12px;
-  font-size: 1.1em;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-form button:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
-}
-
-p {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 1em;
-  color: #ccc;
-}
-
-p a {
-  color: #007bff;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-p a:hover {
-  text-decoration: underline;
-}
-
-.error-message {
-  background-color: #f8d7da; /* Light red background */
-  color: #721c24; /* Dark red text */
-  border: 1px solid #f5c6cb; /* Light red border */
-  border-radius: 5px;
-  padding: 10px 15px;
-  font-size: 16px;
-  font-weight: bold;
-  margin: 15px 0;
-  display: flex;
-  align-items: center;
-}
-
-.error-message::before {
-  content: "⚠️";
-  margin-right: 10px;
-}
-
-.error-message a {
-  color: #721c24;
-  text-decoration: underline;
-}
-
-.error-message a:hover {
-  color: #155724;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
+/* General Reset 
+   Resets default styles for all elements to ensure consistency across browsers */
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  
+  /* Body Styling
+     Centers the content, applies a gradient overlay on the background, 
+     and ensures the page is visually appealing with a full-height layout */
+  body {
+    font-family: 'Arial', sans-serif; /* Sets a clean sans-serif font */
+    color: #fff; /* Default text color */
+    line-height: 1.6; /* Improves text readability */
+    display: flex; /* Enables flexbox for centering content */
+    justify-content: center; /* Centers items horizontally */
+    align-items: center; /* Centers items vertically */
+    height: 100vh; /* Makes the body take full viewport height */
+    background: linear-gradient(
+        rgba(255, 199, 199, 0.6), /* Semi-transparent pink overlay */
+        rgba(172, 172, 172, 0.6)  /* Semi-transparent gray overlay */
+      ), 
+      url('/images/login-background.jpg'); /* Background image */
+    background-size: cover; /* Ensures the image covers the entire screen */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-attachment: fixed; /* Keeps the background static while scrolling */
+    flex-direction: column; /* Stacks content vertically */
+    padding: 20px; /* Adds padding around the content */
   }
-}
-
-.error-message {
-  animation: fadeIn 0.5s ease-out;
-}
+  
+  /* Heading Styling 
+     Styles the main heading to be large, centered, and visually prominent */
+  h1 {
+    text-align: center; /* Centers the text */
+    font-size: 2.5em; /* Makes the font size larger */
+    color: #ffffff; /* Sets the text color to white */
+    margin-bottom: 20px; /* Adds spacing below the heading */
+  }
+  
+  /* Form Styling 
+     Creates a visually distinct card-like container for the form */
+  form {
+    background: rgba(40, 40, 40, 1); /* Dark gray background */
+    padding: 40px; /* Adds internal space within the form */
+    border-radius: 8px; /* Rounds the corners for a modern look */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Adds a shadow for depth */
+    max-width: 400px; /* Sets the maximum width of the form */
+    width: 100%; /* Makes the form responsive */
+    display: flex; /* Enables flexbox layout */
+    flex-direction: column; /* Stacks form elements vertically */
+  }
+  
+  /* Label Styling 
+     Adds consistent spacing and font size for form labels */
+  form label {
+    font-size: 1em; /* Sets label font size */
+    margin-bottom: 8px; /* Adds space below the label */
+    color: #ccc; /* Light gray color for labels */
+  }
+  
+  /* Input Field Styling 
+     Styles input fields for better appearance and usability */
+  form input {
+    width: 100%; /* Makes input fields span the full width */
+    padding: 10px; /* Adds internal padding for a better click area */
+    margin-bottom: 20px; /* Adds space below each input */
+    border-radius: 5px; /* Rounds the input corners */
+    border: 1px solid #444; /* Adds a subtle border */
+    background-color: #333; /* Dark background for inputs */
+    color: #fff; /* White text for contrast */
+    font-size: 1em; /* Sets font size */
+  }
+  
+  /* Focus Effect for Inputs 
+     Adds visual feedback when input fields are focused */
+  form input:focus {
+    outline: none; /* Removes the default focus outline */
+    border-color: #007bff; /* Changes border color to blue */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.6); /* Adds a glowing effect */
+  }
+  
+  /* Submit Button Styling 
+     Styles the form's submit button for better interactivity */
+  form button {
+    width: 100%; /* Makes the button span the full width */
+    padding: 12px; /* Adds padding for better click area */
+    font-size: 1.1em; /* Makes the text slightly larger */
+    background-color: #007bff; /* Primary blue background */
+    color: #fff; /* White text for contrast */
+    border: none; /* Removes default border */
+    border-radius: 5px; /* Rounds the corners */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    transition: background-color 0.3s, transform 0.2s; /* Adds hover transition effects */
+  }
+  
+  /* Hover Effect for Submit Button 
+     Enhances the button's interactivity */
+  form button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slight scaling effect */
+  }
+  
+  /* Paragraph Styling 
+     Styles the additional text below the form */
+  p {
+    text-align: center; /* Centers the text */
+    margin-top: 20px; /* Adds spacing above the paragraph */
+    font-size: 1em; /* Sets font size */
+    color: #ccc; /* Light gray text */
+  }
+  
+  /* Link Styling 
+     Styles links for better visibility and interaction */
+  p a {
+    color: #007bff; /* Blue color for links */
+    text-decoration: none; /* Removes underline by default */
+    font-weight: bold; /* Makes the text bold */
+  }
+  
+  p a:hover {
+    text-decoration: underline; /* Underlines the text on hover */
+  }
+  
+  /* Error Message Styling 
+     Displays error messages prominently */
+  .error-message {
+    background-color: #f8d7da; /* Light red background */
+    color: #721c24; /* Dark red text */
+    border: 1px solid #f5c6cb; /* Light red border */
+    border-radius: 5px; /* Rounds the corners */
+    padding: 10px 15px; /* Adds internal padding */
+    font-size: 16px; /* Sets font size */
+    font-weight: bold; /* Makes the text bold */
+    margin: 15px 0; /* Adds spacing around the error message */
+    display: flex; /* Enables flexbox for alignment */
+    align-items: center; /* Vertically centers the text and icon */
+  }
+  
+  /* Error Icon Styling 
+     Adds an icon before the error message text */
+  .error-message::before {
+    content: "⚠️"; /* Warning icon */
+    margin-right: 10px; /* Adds spacing between icon and text */
+  }
+  
+  /* Fade-in Animation for Error Message 
+     Smoothly displays the error message when it appears */
+  @keyframes fadeIn {
+    from {
+      opacity: 0; /* Starts fully transparent */
+      transform: translateY(-20px); /* Starts slightly above */
+    }
+    to {
+      opacity: 1; /* Ends fully visible */
+      transform: translateY(0); /* Ends in place */
+    }
+  }
+  
+  /* Apply Animation to Error Message */
+  .error-message {
+    animation: fadeIn 0.5s ease-out; /* Applies fade-in animation */
+  }
+  
