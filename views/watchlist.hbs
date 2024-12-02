@@ -5,11 +5,15 @@
     <title>"{{watchlistName}}" watch list</title>
     <link rel="stylesheet" href="/css/watchListStyle.css" />
   </head>
+
   <body>
     <h1>"{{watchlistName}}" watch list</h1>
+
+    <!-- Hidden fields storing watchlist ID and name -->
     <input type="hidden" id="watchlistId" value="{{watchlistId}}" />
     <input type="hidden" id="watchlistName" value="{{watchlistName}}" />
 
+    <!-- Navigation back to the search page -->
     <a href="/" class="back-button">Back to Search</a>
 
     <div class="search-section">
@@ -36,6 +40,7 @@
         </tr>
       </thead>
       <tbody>
+        <!-- Loop through the movies array to display each movie -->
         {{#if movies.length}}
           {{#each movies}}
             <tr>
@@ -57,6 +62,7 @@
               <td>{{this.release_date}}</td>
               <td>
                 <div class="star-rating">
+                  <!-- Movie rating system with radio buttons -->
                   <input
                     type="radio"
                     id="star5-{{this.id}}"
@@ -109,7 +115,7 @@
                 </div>
               </td>
 
-
+              <!-- Watched checkbox to mark a movie as watched -->
               <td>
                 <input type="checkbox" 
                   class="watched-checkbox" 
@@ -118,7 +124,7 @@
                 />
               </td>
 
-
+              <!-- Action to remove the movie from the watchlist -->
               <td>
                 <button
                   class="remove"
@@ -128,6 +134,7 @@
             </tr>
           {{/each}}
         {{else}}
+          <!-- Message when no movies are in the watchlist -->
           <tr>
             <td colspan="7" class="no-results">No movies found.</td>
           </tr>
@@ -135,6 +142,7 @@
       </tbody>
     </table>
 
+    <!-- Link to the external JavaScript file -->
     <script src="/js/watchlistScript.js"></script>
   </body>
 </html>

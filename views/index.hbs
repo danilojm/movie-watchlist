@@ -1,53 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Charset declaration for proper text encoding -->
     <meta charset="UTF-8" />
+    
+    <!-- Viewport settings for responsive design (scale for mobile) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Title of the page displayed in the browser tab -->
     <title>My Movie WatchList</title>
+    
+    <!-- Link to external CSS file for styling -->
     <link rel="stylesheet" href="/css/styles.css" />
-    <!-- Link to external script -->
+    
+    <!-- Link to external JavaScript file, defer to load after HTML parsing -->
     <script src="/js/watchlistScript.js" defer></script>
   </head>
+
   <body>
+    <!-- Header Section -->
     <header>
+      <!-- Welcome message with user’s name dynamically inserted -->
       <h1>Welcome, {{user.name}}</h1>
+      
+      <!-- Navigation section with logout form -->
       <nav>
         <form action="/auth/logout" method="POST">
+          <!-- Logout button to log the user out -->
           <button type="submit">Logout</button>
         </form>
       </nav>
     </header>
 
+    <!-- Main Content -->
     <main>
-      <!-- Form to create a new watchlist -->
+      <!-- Section to create a new watchlist -->
       <section class="create-watchlist">
         <h3>Create a New Watchlist</h3>
+        
+        <!-- Form to submit a new watchlist name -->
         <form action="/watchlist/create" method="POST">
           <input
             type="text"
             name="name"
             id="name"
             required
-            placeholder="Enter watchlist name"
+            placeholder="Enter watchlist name" <!-- Placeholder text inside input field -->
           />
           <button type="submit">Create Watchlist</button>
         </form>
       </section>
 
-      <!-- Display the user's watchlists -->
+      <!-- Section to display the user's existing watchlists -->
       <section class="watchlists">
         <h2>Your WatchLists</h2>
+        
+        <!-- Handlebars logic to check if the user has any watchlists -->
         {{#if watchlists.length}}
           <ul>
+            <!-- Iterate through each watchlist and display its details -->
             {{#each watchlists}}
               <li>
-                <h3>{{this.name}}</h3>
-                <p>{{this.description}}</p>
+                <h3>{{this.name}}</h3> <!-- Display watchlist name -->
+                <p>{{this.description}}</p> <!-- Display watchlist description -->
                 <div class="button-container">
+                  <!-- Form for editing the watchlist -->
                   <form action="/watchlist/{{this._id}}" method="GET">
                     <button type="submit" class="edit-btn">Edit List</button>
                   </form>
-                  <!-- Delete form with confirmation -->
+                  
+                  <!-- Form for deleting the watchlist with a confirmation -->
                   <form action="/watchlist/delete/{{this._id}}" method="POST" onsubmit="confirmDelete(event)">
                     <button type="submit" class="delete-btn">Delete List</button>
                   </form>
@@ -56,6 +78,7 @@
             {{/each}}
           </ul>
         {{else}}
+          <!-- Message when no watchlists are available -->
           <p>You have no watchlists yet. <b>Create One</b> to get started! </p>
         {{/if}}
       </section>

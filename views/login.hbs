@@ -2,29 +2,43 @@
 
 <html lang="en">
   <head>
+    <!-- Character encoding for proper text display -->
     <meta charset="UTF-8" />
+    
+    <!-- Viewport settings to make the page responsive on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Title of the page shown in the browser tab -->
     <title>Your Watch List - JS Final Project</title>
-
+    
+    <!-- Link to external CSS file for styling the login page -->
     <link rel="stylesheet" href="/css/loginStyle.css" />
   </head>
+
   <body>
+    <!-- Main heading for the page -->
     <h1>Login</h1>
 
+    <!-- Check if there's any error message to display -->
     {{#if message}}
+      <!-- Display error message -->
       <div class="error-message">{{message}}</div>
-      <!-- Display the error message -->
     {{/if}}
 
+    <!-- Login Form -->
     <form action="/auth/login" method="POST">
+      <!-- Email input field -->
       <label for="email">Email:</label>
       <input type="email" name="email" id="email" required /><br /><br />
 
+      <!-- Password input field -->
       <label for="password">Password:</label>
-      <input type="password" name="password" id="password" required /><br /><br
-      />
+      <input type="password" name="password" id="password" required /><br /><br />
 
+      <!-- Submit button to login -->
       <button type="submit">Login</button>
+      
+      <!-- Link to registration page if the user doesn't have an account -->
       <p>Don't have an account? <a href="/auth/register">Register</a></p>
     </form>
 

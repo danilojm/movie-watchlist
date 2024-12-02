@@ -2,14 +2,21 @@
 
 <html lang="en">
   <head>
+    <!-- Character encoding for proper text display -->
     <meta charset="UTF-8" />
+    
+    <!-- Viewport settings to make the page responsive on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Title of the page shown in the browser tab -->
     <title>Register</title>
-
-    <!-- Link to the CSS file -->
+    
+    <!-- Link to external CSS file for styling the register page -->
     <link rel="stylesheet" href="/css/registerStyle.css" />
   </head>
+
   <body>
+    <!-- Main heading for the page -->
     <h1>Register</h1>
 
     <!-- Show error messages if any -->
@@ -19,31 +26,38 @@
       </div>
     {{/if}}
 
+    <!-- Registration Form -->
     <form action="/auth/register" method="POST">
+      <!-- Name input field -->
       <div>
         <label for="name">Name</label>
         <input type="text" name="name" id="name" required />
       </div>
 
+      <!-- Email input field -->
       <div>
         <label for="email">Email</label>
         <input type="email" name="email" id="email" required />
       </div>
 
+      <!-- Password input field -->
       <div>
         <label for="password">Password</label>
         <input type="password" name="password" id="password" required />
       </div>
 
+      <!-- Confirm password input field -->
       <div>
         <label for="password2">Confirm Password</label>
         <input type="password" name="password2" id="password2" required />
       </div>
 
+      <!-- Submit button for registration -->
       <div>
         <button type="submit">Register</button>
       </div>
 
+      <!-- Link to login page if the user already has an account -->
       <p>Already have an account? <a href="/auth/login">Login here</a></p>
     </form>
 
