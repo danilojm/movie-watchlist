@@ -1,170 +1,168 @@
 /* General Reset */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin: 0; /* Remove default margin for all elements */
+  padding: 0; /* Remove default padding for all elements */
+  box-sizing: border-box; /* Include padding and border in element's total width/height */
 }
 
+/* Body Styling */
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #afafaf; /* Dark background */
-  color: #e0e0e0; /* Light text */
-  line-height: 1.6;
-  padding: 20px;
+  font-family: 'Arial', sans-serif; /* Set font to Arial */
+  background-color: #afafaf; /* Set a dark background color */
+  color: #e0e0e0; /* Set light text color */
+  line-height: 1.6; /* Increase line height for better readability */
+  padding: 20px; /* Add padding around the body */
 }
 
+/* Background Overlay */
 body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('/images/watchlist-background.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  content: ""; /* Create a pseudo-element for the background */
+  position: fixed; /* Fix the background image to the viewport */
+  top: 0; left: 0; right: 0; bottom: 0; /* Cover the entire viewport */
+  background-image: url('/images/watchlist-background.jpg'); /* Background image */
+  background-size: cover; /* Make the background image cover the entire area */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent repeating the background image */
   opacity: 0.3; /* Adjust transparency */
-  z-index: -1; /* Ensure it’s behind all content */
+  z-index: -1; /* Place the background behind other content */
 }
 
-/* Header */
+/* Header Styling */
 h1 {
-  text-align: center;
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  color: #f8f9fa; /* Light text */
+  text-align: center; /* Center-align the heading */
+  font-size: 2.5em; /* Set font size for the heading */
+  margin-bottom: 20px; /* Space below the heading */
+  color: #f8f9fa; /* Light color for the heading */
 }
 
-/* Back Button */
+/* Back Button Styling */
 .back-button {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  padding: 10px 20px;
+  position: absolute; /* Position the button absolutely */
+  top: 20px; left: 20px; /* Position from the top-left corner */
+  padding: 10px 20px; /* Padding inside the button */
   background-color: #6200ea; /* Purple background */
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 1em;
-  transition: background-color 0.3s, transform 0.2s;
+  color: white; /* White text color */
+  text-decoration: none; /* Remove underline */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 1em; /* Font size */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transition effects */
 }
 
 .back-button:hover {
-  background-color: #3700b3; /* Darker purple */
-  transform: scale(1.05);
+  background-color: #3700b3; /* Darker purple on hover */
+  transform: scale(1.05); /* Slight scale effect on hover */
 }
 
-/* Search Input and Buttons */
+/* Search Section Styling */
 .search-section {
-  display: flex;
-  justify-content: center; /* Center elements horizontally */
+  display: flex; /* Use Flexbox layout */
+  justify-content: center; /* Center the search input and buttons horizontally */
   align-items: center; /* Align elements vertically */
-  gap: 10px; /* Space between the input and buttons */
-  margin: 20px auto;
+  gap: 10px; /* Space between input and buttons */
+  margin: 20px auto; /* Margin to center the section */
 }
 
 #searchQuery {
-  display: block;
-  margin: 0;
-  width: 60%;
-  max-width: 400px;
-  padding: 10px;
-  font-size: 1em;
-  border: 1px solid #333;
-  border-radius: 5px;
-  background-color: #333; /* Dark input field */
-  color: #fff; /* Light text */
+  display: block; /* Block-level element */
+  margin: 0; /* Remove margin */
+  width: 60%; /* Set width to 60% of parent */
+  max-width: 400px; /* Limit the max width */
+  padding: 10px; /* Padding inside the input */
+  font-size: 1em; /* Font size */
+  border: 1px solid #333; /* Dark border around input */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #333; /* Dark background */
+  color: #fff; /* Light text color */
 }
 
 button {
-  padding: 10px 15px;
-  font-size: 1em;
-  color: #fff;
-  background-color: #03dac5; /* Teal button color */
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 5px;
-  transition: background-color 0.3s, transform 0.2s;
+  padding: 10px 15px; /* Padding inside the buttons */
+  font-size: 1em; /* Font size */
+  color: #fff; /* White text */
+  background-color: #03dac5; /* Teal background */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  margin: 5px; /* Margin around the buttons */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transition effects */
 }
 
 button:hover {
-  background-color: #018786; /* Darker teal */
-  transform: scale(1.05);
+  background-color: #018786; /* Darker teal on hover */
+  transform: scale(1.05); /* Slight scale effect on hover */
 }
 
 button.remove {
-  background-color: #cf6679; /* Red button color */
+  background-color: #cf6679; /* Red button color for remove action */
 }
 
 button.remove:hover {
-  background-color: #b00020; /* Darker red */
+  background-color: #b00020; /* Darker red on hover for remove button */
 }
 
 /* Table Styling */
 table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  font-size: 1em;
-  text-align: left;
-  background-color: #1e1e1e; /* Dark table background */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
+  width: 100%; /* Set the table to take full width */
+  border-collapse: collapse; /* Remove table borders */
+  margin-top: 20px; /* Space above the table */
+  font-size: 1em; /* Font size */
+  text-align: left; /* Left-align table text */
+  background-color: #1e1e1e; /* Dark background for the table */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  border-radius: 8px; /* Rounded corners */
+  overflow: hidden; /* Hide overflow content */
 }
 
 thead {
-  background-color: #6200ea; /* Purple header */
-  color: white;
+  background-color: #6200ea; /* Purple background for table header */
+  color: white; /* White text in the header */
 }
 
 th,
 td {
-  padding: 12px 15px;
-  border-bottom: 1px solid #444;
+  padding: 12px 15px; /* Padding inside table cells */
+  border-bottom: 1px solid #444; /* Bottom border for cells */
 }
 
 th {
-  font-weight: bold;
+  font-weight: bold; /* Bold font for table headers */
 }
 
 td {
-  vertical-align: middle;
+  vertical-align: middle; /* Vertically center-align content in table cells */
 }
 
 img {
-  border-radius: 4px;
-  max-width: 100px;
+  border-radius: 4px; /* Rounded corners for images */
+  max-width: 100px; /* Limit the max width of images */
 }
 
 /* No Results Row */
 .no-results {
-  text-align: center;
-  font-size: 1.2em;
-  color: #888;
+  text-align: center; /* Center-align the text */
+  font-size: 1.2em; /* Set font size */
+  color: #888; /* Light gray color for no results message */
 }
 
 /* Star Rating System */
 .star-rating {
-  display: inline-flex;
-  direction: row-reverse;
+  display: inline-flex; /* Inline flex for star rating */
+  direction: row-reverse; /* Reverse the order of the stars */
 }
 
 .star-rating input[type="radio"] {
-  display: none;
+  display: none; /* Hide radio buttons */
 }
 
 .star-rating label {
-  font-size: 1.5em;
-  color: #444; /* Gray stars by default */
-  cursor: pointer;
-  transition: color 0.2s;
+  font-size: 1.5em; /* Size of the stars */
+  color: #444; /* Default gray color for the stars */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: color 0.2s; /* Smooth transition for color change */
 }
 
 .star-rating input[type="radio"]:checked ~ label {
-  color: gold; /* Gold stars for selection */
+  color: gold; /* Gold color for checked stars */
 }
 
 .star-rating label:hover,
@@ -175,18 +173,18 @@ img {
 /* Mobile Responsive */
 @media (max-width: 768px) {
   table {
-    font-size: 0.9em;
+    font-size: 0.9em; /* Smaller font size for tables on mobile */
   }
 
   #searchQuery {
-    width: 90%;
+    width: 90%; /* Increase width of search input on mobile */
   }
 
   .back-button {
-    font-size: 0.9em;
+    font-size: 0.9em; /* Smaller font size for back button */
   }
 
   button {
-    font-size: 0.9em;
+    font-size: 0.9em; /* Smaller font size for buttons */
   }
 }

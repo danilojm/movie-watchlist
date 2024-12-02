@@ -1,170 +1,174 @@
 /* General Reset */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin: 0; /* Remove default margin for all elements */
+  padding: 0; /* Remove default padding for all elements */
+  box-sizing: border-box; /* Include padding and border in element's total width/height */
 }
 
+/* Body Styling */
 body {
-  font-family: "Arial", sans-serif;
-  position: relative;
-  color: #e0e0e0;
-  line-height: 1.6;
-  padding: 0 20px;
+  font-family: "Arial", sans-serif; /* Set default font to Arial */
+  position: relative; /* Enable positioning for background overlay */
+  color: #e0e0e0; /* Light gray text color */
+  line-height: 1.6; /* Increase line height for readability */
+  padding: 0 20px; /* Add padding on the left and right */
 }
 
+/* Background Overlay */
 body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('/images/index-background.jpg');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.5; 
-  z-index: -1;
+  content: ""; /* Create a pseudo-element for the background */
+  position: fixed; /* Fix the background overlay to the viewport */
+  top: 0; left: 0; right: 0; bottom: 0; /* Cover the entire viewport */
+  background-image: url('/images/index-background.jpg'); /* Set background image */
+  background-size: cover; /* Ensure the image covers the entire background */
+  background-position: center; /* Center the background image */
+  opacity: 0.5; /* Set transparency for the overlay */
+  z-index: -1; /* Place behind all other elements */
 }
 
-/* Header */
+/* Header Styling */
 header {
-  background-color: #6200ea; /* Purple background */
-  color: #fff;
-  padding: 20px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background-color: #6200ea; /* Purple background color */
+  color: #fff; /* White text color */
+  padding: 20px; /* Padding around the header */
+  position: sticky; /* Make header sticky */
+  top: 0; /* Stick to the top of the viewport */
+  z-index: 1000; /* Ensure the header stays above other content */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8); /* Shadow under the header */
+  display: flex; /* Use Flexbox layout */
+  justify-content: space-between; /* Space out the header contents */
+  align-items: center; /* Vertically center the content */
 }
 
 header h1 {
-  font-size: 1.8em;
+  font-size: 1.8em; /* Set font size for the header title */
 }
 
+/* Header Button Styling */
 header nav button {
-  padding: 8px 15px;
-  font-size: 0.9em;
-  background-color: #ff6b6b; /* Red background */
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  padding: 8px 15px; /* Padding inside the button */
+  font-size: 0.9em; /* Set font size for the button */
+  background-color: #ff6b6b; /* Red background color */
+  color: #fff; /* White text color */
+  border: none; /* Remove default button border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Change cursor to pointer on hover */
 }
 
 header nav button:hover {
-  background-color: #d9534f; /* Darker red */
+  background-color: #d9534f; /* Darker red on hover */
 }
 
-/* Main Content */
+/* Main Content Styling */
 main {
-  margin: 20px auto;
-  max-width: 800px;
-  background: #1e1e1e;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  margin: 20px auto; /* Center align the main content with top and bottom margin */
+  max-width: 800px; /* Set maximum width for the main content */
+  background: #1e1e1e; /* Dark background color */
+  padding: 20px; /* Padding inside the main content */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8); /* Shadow for depth */
 }
 
 /* Section Styling */
 .create-watchlist, .watchlists {
-  margin-bottom: 30px;
+  margin-bottom: 30px; /* Add space below each section */
 }
 
 .create-watchlist h3, .watchlists h2 {
-  text-align: center;
-  margin-bottom: 15px;
+  text-align: center; /* Center-align the section headings */
+  margin-bottom: 15px; /* Add space below the headings */
 }
 
+/* Form Styling */
 form {
-  text-align: center;
+  text-align: center; /* Center-align the form content */
 }
 
 form input[type="text"] {
-  padding: 10px;
-  width: 80%;
-  max-width: 400px;
-  font-size: 1em;
-  border: 1px solid #444;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  background-color: #333;
-  color: #fff;
+  padding: 10px; /* Padding inside the input field */
+  width: 80%; /* Set width to 80% of the parent container */
+  max-width: 400px; /* Limit maximum width of the input */
+  font-size: 1em; /* Set font size for the input text */
+  border: 1px solid #444; /* Dark border around the input */
+  border-radius: 5px; /* Rounded corners for the input field */
+  margin-bottom: 10px; /* Space below the input field */
+  background-color: #333; /* Dark background for the input */
+  color: #fff; /* White text color for input */
 }
 
 form button {
-  padding: 10px 20px;
-  font-size: 1em;
-  background-color: #03dac5;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  padding: 10px 20px; /* Padding inside the button */
+  font-size: 1em; /* Set font size for the button */
+  background-color: #03dac5; /* Teal background color */
+  color: #fff; /* White text color */
+  border: none; /* Remove default button border */
+  border-radius: 5px; /* Rounded corners for the button */
+  cursor: pointer; /* Pointer cursor on hover */
 }
 
 form button:hover {
-  background-color: #018786;
+  background-color: #018786; /* Darker teal background on hover */
 }
 
-/* Watchlists */
+/* Watchlist Styling */
 ul {
-  list-style: none;
-  padding: 0;
+  list-style: none; /* Remove default list bullet points */
+  padding: 0; /* Remove padding from the list */
 }
 
 ul li {
-  background: #2c2c2c;
-  margin: 10px 0;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background: #2c2c2c; /* Dark background for each list item */
+  margin: 10px 0; /* Vertical margin between list items */
+  padding: 15px; /* Padding inside each list item */
+  border-radius: 8px; /* Rounded corners for each item */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow around items */
 }
 
 ul li h3 {
-  margin-bottom: 10px;
+  margin-bottom: 10px; /* Add space below the title inside the list item */
 }
 
 ul li p {
-  color: #bbb;
+  color: #bbb; /* Light gray color for paragraph text */
 }
 
+/* Button Container for Edit and Delete */
 .button-container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
+  display: flex; /* Use Flexbox layout */
+  justify-content: space-between; /* Space out the buttons */
+  margin-top: 10px; /* Add space above the container */
 }
 
+/* Edit Button Styling */
 .edit-btn {
-  background-color: #28a745;
-  color: #fff;
-  padding: 8px 15px;
-  border-radius: 5px;
+  background-color: #28a745; /* Green background color */
+  color: #fff; /* White text color */
+  padding: 8px 15px; /* Padding inside the button */
+  border-radius: 5px; /* Rounded corners */
 }
 
 .edit-btn:hover {
-  background-color: #218838;
+  background-color: #218838; /* Darker green on hover */
 }
 
+/* Delete Button Styling */
 .delete-btn {
-  background-color: #cf6679;
-  color: #fff;
-  padding: 8px 15px;
-  border-radius: 5px;
+  background-color: #cf6679; /* Red background color */
+  color: #fff; /* White text color */
+  padding: 8px 15px; /* Padding inside the button */
+  border-radius: 5px; /* Rounded corners */
 }
 
 .delete-btn:hover {
-  background-color: #b00020;
+  background-color: #b00020; /* Darker red on hover */
 }
 
-/* Links */
+/* Links Styling */
 a {
-  color: #03dac5;
-  text-decoration: none;
+  color: #03dac5; /* Teal color for links */
+  text-decoration: none; /* Remove underline from links */
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: underline; /* Underline the link on hover */
 }
